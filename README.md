@@ -7,4 +7,4 @@ Game created when learning javascript and bootstrap. Remove sticks from the stac
  
 Nim Game attaches to div element id="nimBegin".
 
-To run, include file and "<div id="nimBegin"></div>" at desired location for game.
+To run, include file and <xmp><div id="nimBegin"></div></xmp> at desired location for game.
