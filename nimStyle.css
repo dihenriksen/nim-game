@@ -1,0 +1,82 @@
+#playingArea {
+background-color:grey;
+background-color: rgba(0,0,255,0.2);
+border-radius:10px;
+
+  
+}
+
+
+
+
+.cTemp {
+	background-color:rgba(254,254,254,0.85);
+	margin-top:5px;
+	margin-bottom: 5px;
+}
+
+.span4.game{
+	float:none;
+	margin:0 auto;
+	
+}
+
+h4{
+	text-align: center;
+}
+
+.game{
+	border-radius:10px;
+	background-color: rgba(0,0,255,0.3);
+	padding: 5px;
+	
+	
+	
+	
+}
+
+.sticksGraphic{
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+
+#help{
+	width:70px;
+	position:relative;
+	top:-5px;
+}
+
+#stackSize{
+	width:120px;
+}
+
+
+
+
+.selectButton{
+	position:relative;
+	margin-bottom: 5px;
+	margin-left: 190px;
+	margin-right: 0px;
+	margin-top: 5px;
+	width:80px;
+
+}
+
+.btn.go {
+	position:relative;
+	top:-5px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.difficultySelector {
+	padding-top:10px;
+	padding-bottom: 15px;
+	margin-left:55px;
+	margin-right: 30px;
+}
+
+
+
