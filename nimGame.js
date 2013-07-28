@@ -5,14 +5,27 @@ var difficulty="hard";
 $(document).ready(function() {
   var sticksRemaining=0;
 	var instructionsText=$('<p id="iText"><br>The aim of the game is to have the other player remove the last stick. <br><br> You must select one to three sticks each turn.<br><br> Try the game now with ten sticks!</p>').hide();
-	
+
 	$('#nimBegin').append('<div class="span4 game"><h4>The Nim Game</h4><div class="btn-group difficultySelector" data-toggle="buttons-radio"><button type="button" class="btn btn-primary easy">Easy</button><button type="button" class="btn btn-primary active medium">Medium</button><button type="button" class="btn btn-primary hard">Hard</button></div><div class="welcome">Please input the number of sticks you would like to play with.<br><br><input type="number" id="stackSize" placeholder = "Stack size"><div class="btn go">Play!</div><p class="btn" id="help">Instructions</p></div ><div class="sticksGraphic" data-toggle="buttons-checkbox"></div><div id="playingArea"></div></div>');
+
+	var numSticks = $('#stackSize').val();
+
+
+	$('#stackSize').change(function() {
+		numSticks = $('#stackSize').val();
+		if (numSticks < 0) {
+			$('#stackSize').val(0);
+		} else if (numSticks !== Math.floor(numSticks)) {
+			$('#stackSize').val(Math.floor(numSticks));
+		}
+		console.log(numSticks);
+	});
 
 	//$('#game').hide();
 	 //var difficultySelector=$('<div class="btn-group data-toggle="buttons-radio"><button type="button" class="btn easy btn-primary">Easy</button><button type="button" class="btn medium btn-primary">Medium</button><button type="button" class="btn hard btn-primary">Hard</button></div>');
 	var easyButton=$('<button class="btn easy">Easy</button>');
 	$('.sticksGraphic').hide()
-	
+
 	//var altSelector=$('<div class="btn-group" data-toggle="buttons-radio"><button type="button" class="btn btn-primary easy">Easy</button><button type="button" class="btn btn-primary medium">Medium</button><button type="button" class="btn btn-primary active hard">Hard</button></div>');
 	//$('.hard').addClass('active');
 
@@ -78,7 +91,7 @@ $(document).ready(function() {
 
 	});
 
-	
+
 });
 
 var waiting=false;
@@ -110,8 +123,8 @@ function playGame(sticksLeft){
 		})*/
 
 
-		
-		
+
+
 
 
 
@@ -127,7 +140,7 @@ function playGame(sticksLeft){
 		}*/
 
 
-	
+
 }
 
 function endOfGame(winner) {
@@ -135,14 +148,14 @@ function endOfGame(winner) {
 		$('.temp').slideUp();
 		$('.cTemp').slideUp();
 		$('.other').slideUp();
-		$('#playingArea').append("<p class='other'>Oh no! I am forced to take the last stick. <br> Great job for winning!</p>"); 
+		$('#playingArea').append("<p class='other'>Oh no! I am forced to take the last stick. <br> Great job for winning!</p>");
 		$('.welcome').slideDown();
 	}
 	else {
 			$('.temp').slideUp();
 		$('.cTemp').slideUp();
 		$('.other').slideUp();
-		$('#playingArea').append("<p class='other'>Too bad you lost. </p>"); 
+		$('#playingArea').append("<p class='other'>Too bad you lost. </p>");
 		$('.welcome').slideDown();
 	}
 	firstTurn=true;
@@ -178,8 +191,8 @@ function humanTurn(pile) {
 	//$('.btn.now').on('click',function(){
 	//$('#playingArea').append(sticksButtons);
 
-	
-	$('#playingArea').append(request); 
+
+	$('#playingArea').append(request);
 	//$('#playingArea').append(newInput);
 	$('.sticksGraphic').append(newButton);
 	$('.temp').slideDown();
@@ -187,8 +200,8 @@ function humanTurn(pile) {
 		//var stickChoice=$('#choice').val()*1;
 		var stickChoice=$('.stick.active').length;
 		if(stickChoice>3 || stickChoice<1) {
-			$('#playingArea').append(clarification); 
-			$('#playingArea').append(request); 
+			$('#playingArea').append(clarification);
+			$('#playingArea').append(request);
 			//$('#playingArea').append(newInput);
 			$('.sticksGraphic').append(newButton);
 			$('.temp').slideDown();
@@ -208,7 +221,7 @@ function humanTurn(pile) {
 			{
 				$('#playingArea').append('<p class="other">You removed '+stickChoice+' stick.</p>');
 			}
-			
+
 			pile=pile-stickChoice;
 			wating=false;
 			return computerTurn(pile);
@@ -226,7 +239,7 @@ function computerTurn(pile) {
 	}
 
 	if(difficulty=="hard"){
-		
+
 		//$('#playingArea').append(difficulty);
 		if(pile<=0){
 			endOfGame(0);
@@ -243,18 +256,18 @@ function computerTurn(pile) {
 		else {
 			computerChoice=((pile-1)%(3+1));
 		}
-		
-	
+
+
 	}
 	else if(difficulty=="medium"){
-		
-		
+
+
 		if(pile<=0){
 			endOfGame(0);
 			return true;
 		}
 		var computerChoice=pile%(3+2);
-		
+
 		if(pile<5){
 			computerChoice=pile-1;
 			if(computerChoice==0){
@@ -275,7 +288,7 @@ function computerTurn(pile) {
 		if(computerChoice==0){
 			computerChoice=1;
 		}
-		
+
 	}
 
 
@@ -290,7 +303,7 @@ function computerTurn(pile) {
 	}
 	//$('#playingArea').append(sticksRemainingNotice);
 
-	
+
 	$('#playingArea').append(computerChoiceNotice);
 	pile=pile-computerChoice;
 
@@ -306,7 +319,7 @@ function computerTurn(pile) {
         	$(this).fadeOut('slow', function(){$(this).remove();});
 
         }
-      
+
       });
 
 
